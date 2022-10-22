@@ -16,11 +16,11 @@ namespace BusinessLogic
 		private string image;
 
 		// Getters & Setters
-		public int ProductId { get { return productId; } set { this.productId = value; } }
-		public string ProductName { get { return productName; } set { this.productName = value; } }
-		public string Description { get { return description; } set { this.description = value; } }
-		public float Price { get { return price; } set { this.price = value; } }
-		public string Image { get { return image; } set { this.image = value; } }
+		public int ProductId { get { return productId; } set { productId = value; } }
+		public string ProductName { get { return productName; } set { productName = value; } }
+		public string Description { get { return description; } set { description = value; } }
+		public float Price { get { return price; } set { price = value; } }
+		public string Image { get { return image; } set { image = value; } }
 
 		// Constructor
 		public ProductBLL()
