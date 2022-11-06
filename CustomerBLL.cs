@@ -1,10 +1,13 @@
-﻿using System;
+﻿using DataAccess;
+using DataAccess.DTO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using static System.Reflection.Metadata.BlobBuilder;
 
 namespace BusinessLogic
 {
@@ -41,6 +44,48 @@ namespace BusinessLogic
 		public CustomerBLL()
 		{
 
+		}
+
+
+
+
+
+		CustomerDAL customerDAL = new CustomerDAL();
+		//CustomerBLL customerBLL = new CustomerBLL();
+		List<CustomerDTO> customers = new List<CustomerDTO>();
+		
+
+		public List<CustomerDTO> Read()
+		{
+			List <CustomerDTO> result = customerDAL.Read();
+			return result;
+		}
+
+		public int Update(CustomerDTO customer)
+		{
+			int result = customerDAL.Update(customer);
+			return result;
+		}
+
+		public int Create(CustomerDTO customer)
+		{
+			int result = customerDAL.Create(customer);
+			return result;
+		}
+
+		public int Delete(CustomerDTO customer)
+		{
+			int result = customerDAL.Delete(customer);
+			return result;
+		}
+
+
+
+
+		public List<CustomerDTO> GetAllCustomers()
+		{
+			//List<CustomerDTO> customersList = customerBLL.Read();
+			return customers;
 		}
 	}
 }
