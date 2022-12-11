@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DataAccess.DTO;
+using DataAccess;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,19 +11,14 @@ namespace BusinessLogic
 	public class OrderDetailsBLL
 	{
 		// Properties
-		private int orderId; // object
-		private int productId; // object
-		private string productName;
+		private int orderDetailId;
 		private int quantity;
-		private float unitCost;
-		private float subTotal;
+		private ProductDTO product;
 
 		// Getters and setters
-		public int ProductId { get { return productId; } set { productId = value; } }
-		public string ProductName { get { return productName; } set { productName = value; } }
+		public int OrderDetailId { get { return orderDetailId; } set { orderDetailId = value; } }
 		public int Quantity { get { return quantity; } set { quantity = value; } }
-		public float UnitCost { get { return unitCost; } set { unitCost = value; } }
-		public float SubTotal { get { return subTotal; } set { subTotal = value; } }
+		public ProductDTO Product { get { return product; } set { product = value; } }
 
 		// Constructor
 		public OrderDetailsBLL()
@@ -30,9 +27,29 @@ namespace BusinessLogic
 		}
 
 		// Logic
-		public void calcPrice()
+		OrderDetail orderDetailData = new OrderDetail();
+		public List<OrderDetailDTO> Read()
 		{
+			List<OrderDetailDTO> result = orderDetailData.Read();
+			return result;
+		}
 
+		public int Update(OrderDetailDTO orderDetail)
+		{
+			int result = orderDetailData.Update(orderDetail);
+			return result;
+		}
+
+		public int Create(OrderDetailDTO orderDetail)
+		{
+			int result = orderDetailData.Create(orderDetail);
+			return result;
+		}
+
+		public int Delete(OrderDetailDTO orderDetail)
+		{
+			int result = orderDetailData.Delete(orderDetail);
+			return result;
 		}
 	}
 }

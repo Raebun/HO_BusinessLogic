@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DataAccess.DTO;
+using DataAccess;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,18 +11,16 @@ namespace BusinessLogic
 	public class CartItemBLL
 	{
 		// Properties
-		private int productId; // object
-		private string productName;
+		private int cartItemId;
 		private int quantity;
-		private float unitCost;
-		private float subTotal;
+		private ProductBLL product;
+		private ShoppingCartBLL shoppingCart;
 
 		// Getters and setters
-		public int ProductId { get { return productId; } set { productId = value; } }
-		public string ProductName { get { return productName; } set { productName = value; } }
+		public int CartItemId { get { return cartItemId; } set { cartItemId = value; } }
 		public int Quantity { get { return quantity; } set { quantity = value; } }
-		public float UnitCost { get { return unitCost; } set { unitCost = value; } }
-		public float SubTotal { get { return subTotal; } set { subTotal = value; } }
+		public ProductBLL Product { get { return product; } set { product = value; } }
+		public ShoppingCartBLL ShoppingCart { get { return shoppingCart; } set { shoppingCart = value; } }
 
 		// Constructor
 		public CartItemBLL()
@@ -29,9 +29,28 @@ namespace BusinessLogic
 		}
 
 		// Logic
-		public void calcPrice()
+		CartItem cartItemData = new CartItem();
+		public List<CartItemDTO> Read()
 		{
+			List<CartItemDTO> result = cartItemData.Read();
+			return result;
+		}
 
+		public int Update(CartItemDTO cartItem)
+		{
+			int result = cartItemData.Update(cartItem);
+			return result;
+		}
+		public int Create(CartItemDTO cartItem)
+		{
+			int result = cartItemData.Create(cartItem);
+			return result;
+		}
+
+		public int Delete(CartItemDTO cartItem)
+		{
+			int result = cartItemData.Delete(cartItem);
+			return result;
 		}
 	}
 }
